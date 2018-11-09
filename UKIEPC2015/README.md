@@ -11,4 +11,4 @@ From an array containing the messages a dictionary was built containing all of t
 
 The list was then sorted alphabetically.
 
-Lambda was then used to sort the list based on the frequency of each message being sent.
+Lambda was then used to sort the list based on the frequency of each message being sent. _Ones that are duplicate values will not be shifted within their inclusive order therefore alphabetical order will be preserved_
