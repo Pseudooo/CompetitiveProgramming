@@ -9,6 +9,8 @@ at the end of each of the n segments.
 
 '''
 
+import math as m
+
 n,g = [int(a) for a in input().split()]
 
 Segments = []
@@ -16,5 +18,17 @@ Segments = []
 for i in range(n):
     s,theta = [int(b) for b in input().split()]
     Segments.append((s,theta))
-    
 
+Segments = Segments[::-1]
+vels = []
+lastVel = 0
+for s,theta in Segments:
+    vel = 0.0
+    vel = (lastVel**2+(2*g*m.cos(m.radians(theta))*s))**.5
+    vel = vel.__round__(6)
+    lastVel = vel
+    vels.append(vel)
+    
+vels = vels[::-1]
+    
+[print(vel) for vel in vels]
