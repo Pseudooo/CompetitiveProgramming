@@ -68,7 +68,7 @@ else:
 
     for i,msg in enumerate(SharedMessages):
         if MsgFreq[SharedMessages[x]] != MsgFreq[msg]:
-            SharedMessages[x:i+1].sort()
+            SharedMessages[x:i].sort()
     
     [print(msg) for msg in SharedMessages]
     
