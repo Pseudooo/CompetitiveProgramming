@@ -35,16 +35,20 @@ for msg in Messages:
     # First build the frequency dictionary
     for wrd in msg[1:]:
         if wrd in MsgFreq.keys():
+            # Increase index
             MsgFreq[wrd]+=1
         else:
+            # If doesn't exist initialize
             MsgFreq[wrd] = 1
     
-    user = msg[0]
+    user = msg[0] # First word will always be user
     MsgSet = set(msg[1:])
     
     if user in UserMessages.keys():
+        # Union is a method of appending to curret set
         UserMessages[user] = set.union(UserMessages[user], MsgSet)
     else:
+        
         UserMessages[user] = MsgSet
     
 # Now we look at the intersection of messages between sets
@@ -58,10 +62,16 @@ else:
     
     # Now sort shared messages by message frequency
     SharedMessages.sort(key=lambda a : MsgFreq[a], reverse=True)
-
-    # TODO Find blocks of same frequency and sort alphabetically
     
+    # Pointer to identify blocks that have the same frequency
+    x = 0
 
+    for i,msg in enumerate(SharedMessages):
+        if MsgFreq[SharedMessages[x]] != MsgFreq[msg]:
+            SharedMessages[x:i+1].sort()
+    
+    [print(msg) for msg in SharedMessages]
+    
     
     
     
