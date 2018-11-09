@@ -61,17 +61,12 @@ else:
     # Not empty
     
     # Now sort shared messages by message frequency
+    SharedMessages.sort() # Sort alphabetically first
+    
+    # Sort based on frequency
     SharedMessages.sort(key=lambda a : MsgFreq[a], reverse=True)
     
-    # Pointer to identify blocks that have the same frequency
-    x = 0
-
-    for i,msg in enumerate(SharedMessages):
-        if MsgFreq[SharedMessages[x]] != MsgFreq[msg]:
-            SharedMessages[x:i].sort()
-    
     [print(msg) for msg in SharedMessages]
-    
     
     
     
