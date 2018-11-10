@@ -1,14 +1,18 @@
 #  Solution Descriptions
 
+## Problem B
+Initial Problem can be found [here](https://open.kattis.com/problems/mountainbiking)
+
+Now, the wording of this problem was felt to be very misleading at first but can be quickly realised that the bike(s) in the question are travelling up the hill rather than down. The velocities that are given are the required of the speed at the begining of the given segment such that no work is required to move up the hill from the bottom.
+
+This problem can be made much easier by thinking of it backwards. If we reverse the order of the segments that are given then we have an array containing the segments starting from the top of the mountain. Using an equation of motion (v^2=u^2+2as) we can calculate the speed of the bike at the end of the segment whilst taking into account their previous velocity. Now doing this whilst iterating through our reversed array of segments allows us to calculate it much easier. We simply print the elements of the resultant velocities list backwards.
+
+
 ## Problem C
-Problem C was largely solved using sets, in attempting to solve it the idea of efficiency was kept in mind.
+Initial Problem can be found [here](https://open.kattis.com/problems/conversationlog)
 
-First we collected the inputs that were to be provided these were:
-- n _The amount of messages that are to be entered_
-- n * Message Lines _The message that was sent, each message will lead with the sender's name_
+With this problem it's a large application of sets. The first input is an integer, n, that tells us the number of messages that have been sent. The following n lines are then each message, the first word of each message is always the sending user. Our first goal is to find a list of words that have been said by every user in the chat at least once. Sets in python can be applied very nicely for this solution.
 
-From an array containing the messages a dictionary was built containing all of the frequencies of each message that has been sent across all users and also a dictionary that contains the set of message(s) sent by each user. This allowed us to use the intersection functionality of sets to find all messages that are shared between all users. The set of messages shared between all users is simply the intersection of all sets from each user that we defined in our dictionary.
+First we want to convert the data into a different form, the form we used for this solution was two dictionaries, one with a key of the given user's name and the value being a set of words sent by them. The second dictionary tracks the frequency of each word that is sent in a message, so the key is the given word and the value is an integer representing the number of times it has been sent.
 
-The list was then sorted alphabetically.
-
-Lambda was then used to sort the list based on the frequency of each message being sent. _Ones that are duplicate values will not be shifted within their inclusive order therefore alphabetical order will be preserved_
+Once these new dataforms are built we want to find the messages that are shared, which is accomplished in a single line within python by taking the intersection of all the sets contained in the dictionary of the users words. With this list of shared messages we simply want to sort by their frequency of occurence and sort ones that share a frequency alphabetically.
