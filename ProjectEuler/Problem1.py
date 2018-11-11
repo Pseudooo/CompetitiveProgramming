@@ -29,9 +29,11 @@ for i in range(15):
         
     if (n-i) % 15 == 0:
         biggest15n = (n-i) // 15
+        break
 
 sum1 = (biggest3n/2) * (6+(biggest3n-1)*3) # sum of all threes in bound
 sum2 = (biggest5n/2) * (10+(biggest5n-1)*5) # sum of all fives in bound
 sumOfConflicts = (biggest15n/2) * (30+(biggest15n-1)*15) # sum of all 15s (Conflicts)
 total = int(sum1+sum2-sumOfConflicts) # Calculate total
+
 print("Sum: {0}".format(total))
