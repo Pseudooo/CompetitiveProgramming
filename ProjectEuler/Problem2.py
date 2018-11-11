@@ -25,4 +25,4 @@ for i in range(3,maxN,3):
 delayed = time.time() - now
     
 print("Sum:",total)
-print("Took: "+str(delayed)+"s")
+print("Took: {0:.5f}s".format(delayed))
