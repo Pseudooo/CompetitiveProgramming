@@ -57,11 +57,4 @@ for w in words:
 
 
 # Print out the final words
-# DO THIS BETTER
-output = ""
-for n in final:
-    output += n+" "
-if len(output) > 0:
-    output = output[:-1]
-
-print(output)
+print(" ".join(final))
